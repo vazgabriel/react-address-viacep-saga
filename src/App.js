@@ -1,7 +1,13 @@
+// React/Redux Modules
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { changeCEP, searchAddress } from "./redux/actions";
+// Actions
+import { changeCEP } from "./redux/actions";
+
+// Sagas
+import { sagaMiddleware } from "./redux";
+import { getAddressCEP } from "./redux/sagas";
 
 class App extends Component {
   // State just for debounce time the changes
@@ -38,10 +44,10 @@ class App extends Component {
       debounce: setTimeout(() => {
         if (this.props.cep.length === 9) {
           // Get address data
-          this.props.onSearchAddress();
+          sagaMiddleware.run(getAddressCEP);
         }
-        }, 300)
-      });
+      }, 300)
+    });
   };
 
   render() {
@@ -120,8 +126,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onChangeCEP: cep => dispatch(changeCEP(cep)),
-  onSearchAddress: () => dispatch(searchAddress())
+  onChangeCEP: cep => dispatch(changeCEP(cep))
 });
 
 export default connect(

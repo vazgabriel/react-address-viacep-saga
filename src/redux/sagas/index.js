@@ -3,22 +3,16 @@
  */
 
 // Importing effects
-import { call, select, put, takeEvery } from "redux-saga/effects";
+import { call, select, put } from "redux-saga/effects";
 
 // Importing actions
 import {
   CHANGE_ADDRESS,
-  RESET_ADDRESS,
-  SEARCH_ADDRESS
+  RESET_ADDRESS
 } from "../actions/types";
 
 // Importing HTTP/Axios instance
 import http from "../../services/http";
-
-// Export default Saga (Listening from actions for other sagas)
-export default function* mySaga() {
-  yield takeEvery(SEARCH_ADDRESS, getAddressCEP);
-}
 
 /**
  * Get AddressCEP Saga
