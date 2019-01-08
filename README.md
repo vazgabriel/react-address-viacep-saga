@@ -20,5 +20,5 @@ yarn start # or npm start
 This app uses [Via CEP](https://viacep.com.br/) to get address and works only with brazilian CEP's.
 
 ### Me
-[Github](https://github.com/vazgabriel/)\n
+[Github](https://github.com/vazgabriel/)
 [Linkedin](https://linkedin.com/in/gabrielcvaz/)
